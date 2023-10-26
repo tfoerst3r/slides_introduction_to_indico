@@ -1,0 +1,269 @@
+
+---
+title: Getting Started with Indico
+subtitle: Let's Build Your First Meeting
+author: Thomas Förster
+date: 2023-10-27
+institute: HIFIS
+format:
+  revealjs:
+    theme: ./custom/themes/default.scss
+    transition: none
+    transition-speed: fast
+    slide-number: c
+    width: 724
+    heigth: 496
+    show-notes: false
+    html-math-method: katex
+    toc: false
+    menu: false
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: false
+    citation-hover: true
+    footnote-hover: true
+bibliography: ./ref.bib
+logo: ./custom/images/logo_HIFIS.svg
+project:
+  type: default
+  output-dir: _output
+  preview:
+    port: 4200
+    browser: false
+---
+
+## Introduction
+
+<p style="margin-top:1em"/>
+
+::: notes
+- Introduce Yourself
+    - My work/research field?
+    - What course to organize next?
+- Get to know your audience
+- What this course is about
+- Go through some resources
+    - [Github](https://github.com/indico/indico)
+    - [DocuSite](https://getindico.io/)
+:::
+
+<!--
+<p style="margin-top:-5rem"/>
+
+:::::: columns
+
+::: column
+[**Introduce Yourself**](https://notes.desy.de/qR9DN6KfTSCwLXkpw3lY5w?view)
+
+- In which area of expertise do you work?
+- What event do you want to organize?
+
+<!-- iframe 
+    width="90%"
+    style="height:300px !important;"
+    src="https://notes.desy.de/s/Z3UydDQwb#Let%E2%80%99s-have-s-short-introduction">
+</iframe> 
+
+::: 
+::: column
+-->
+
+
+**What this course is about**
+
+- Introduction to building/management of **talks/workshops/project meetings**.
+
+**Resources**
+
+- [Indico Documentation](https://learn.getindico.io/)
+- [Indico Github Repo](https://github.com/indico/indico)
+- [HIFIS Indico Instance](https://events.hifis.net/)
+
+<!--
+:::
+::::::
+-->
+
+## 2nd AVNI All-Hands Meeting
+
+<p style="margin-top:0em"/>
+::: small
+
+:::::: columns
+::: column
+::: example
+**(1) Introduction**
+
+- Greetings and Agenda
+- Steering Committee's Results
+- Teaser Talk?
+:::
+
+::: example
+**(2) Subgroup-Reporting**
+
+- Association Board
+- User Board
+- Developer Board
+:::
+
+:::
+::: column
+::: example
+**(3) Group Discussion**
+
+- "What are our future goals?"
+- "How to advertice Indico?"
+:::
+::: example
+**(4) Summary and Next Actions**
+:::
+:::
+::::::
+:::
+
+## Creating an Event Page (1)
+
+::: small
+Event page HTML formatting:
+:::
+
+::: {.tiny}
+``` html
+<div>
+    <p>
+        We are happy to welcome you to our 2nd AVNI All-Hands meeting. We are looking forward to meeting you at <a href="https://www.hzdr.de/db/Cms?pNid=281">HZDR</a> in Dresden this time.
+    </p>
+    <p>
+        We will gather to
+    </p>
+    <ul>
+        <li>
+            <span>foster networking,</span>
+        </li>
+        <li>
+            <span>develop our working groups to align with the foreseeable future</span>
+        </li>
+    </ul>
+    <p>
+        We provide the possibility for closed sessions for our boards (SAB, Fedboard).
+    </p>
+    <h3>
+        Registration
+    </h3>
+    <p>
+        Please register for the event until <strong>March 10, 2024.</strong>
+    </p>
+    <h3>
+        Accommodation
+    </h3>
+    <p>
+        We have reserved rooms in our dorms to allow everyone to stay in the same hotel. <strong>Please use the code that will be sent to you via the registration confirmation mail.</strong> The rate is 40€/night incl. breakfast. Rooms are blocked until 25. February 2024.
+    </p>
+    <p>
+        &nbsp;
+    </p>
+</div>
+```
+:::
+
+## Creating an Event Page (2)
+
+- Location
+  
+  ``` url
+  https://www.openstreetmap.org/way/122809308#map=15/51.0565/13.9616
+  ```
+
+## Generating a Timetable
+
+::: small
+::: example
+**Steering Commitee's Results**
+
+*Description*
+
+```
+Presenting the Results from the Steering Board Meeting.
+```
+
+:::
+:::
+
+
+## Set up Registration
+
+::: small
+
+**Affiliation Description**
+
+``` 
+Each center's initial number of seats is limited to allow each center's colleagues to register. Leftover seats will be filled from the waiting list. Additionally, we collect this information for statistical purposes and to improve our outreach.
+```
+
+**Import**
+
+CSV structure: 
+
+::: example
+``` 
+First Name*, Last Name*, Affiliation, Position, Phone Number, E-mail*
+```
+:::
+
+::: example
+
+**Example `registration.csv`**
+
+``` csv
+Max,Musterman,,,,max.musterman@hzdr.de
+Laure,Musterfrau,,,,laura.musterfrau@hzdr.de
+```
+
+:::
+:::
+
+## Feedback Surveys
+
+::: small
+
+**Description**
+
+Please let us know how the workshop went for you in 3 quick questions.
+:::
+
+
+::: tiny
+**`survey.json`**
+
+```json
+{"sections":[
+    {"content":[
+        {
+            "description":"",
+            "field_data":{"max_length":null,"max_words":null,"multiline":true},
+            "field_type":"text","is_required":false,
+            "title":"What should be changed or improved?",
+            "type":"question"
+        },
+        {
+            "description":"Please answer on a scale from 1 (extremely unlikely) to 10 (extremely likely).",
+            "field_data":{"max_value":10,"min_value":1},
+            "field_type":"number",
+            "is_required":true,
+            "title":"How likely would you recommend the workshop to a friend or colleague?",
+            "type":"question"
+        }
+    ],
+    "display_as_section":false,
+    "type":"section"}
+ ],
+"version":1
+}
+```
+:::
+
+::: small
+Add the question: **What was good and should be kept?**
+:::
